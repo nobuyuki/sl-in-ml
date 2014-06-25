@@ -1,7 +1,8 @@
+#include <unistd.h>
 #include <curses.h>
 
-#include <mlvalues.h>
-#include <memory.h>
+#include <caml/mlvalues.h>
+#include <caml/memory.h>
 
 value curses_initscr(value unit)
 {

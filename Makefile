@@ -1,7 +1,5 @@
-OCAMLC=$(HOME)/.opam/4.00.1/bin/ocamlc
-OCAML_INC_DIR=$(HOME)/.opam/4.00.1/lib/ocaml/caml
-# OCAMLC=/opt/godi/bin/ocamlc
-# OCAML_INC_DIR=/opt/godi/lib/ocaml/std-lib/caml
+OCAMLC=ocamlfind ocamlc
+OCAML_INC_DIR=`ocamlfind query -i-format stdlib`
 
 all:	sl
 
@@ -9,7 +7,7 @@ curses.cmo:	curses.ml
 	$(OCAMLC) -c -g curses.ml
 
 curses.o:	curses.c
-	cc -c -I$(OCAML_INC_DIR) curses.c
+	cc -c $(OCAML_INC_DIR) curses.c
 
 sl.cmo:		sl.ml
 	$(OCAMLC) -c -g -I +unix sl.ml

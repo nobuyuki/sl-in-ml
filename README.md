@@ -27,11 +27,11 @@ sl.ml
 いただいてかまいません。ただし、オリジナルの作者である豊田正史氏の配布
 条件を遵守してください。
 
-# などと書くほどのプログラムでもないのだが。
+**などと書くほどのプログラムでもないのだが。**
 
-- ビルド方法： Objective Camlがインストール済みあれば、あとはmakeでOK
-です。Makefileの先頭のパス名だけ変更してください。OCAML_INCL_DIRは
-mlvales.hがあるディレクトリです。これだけ修正すれば、makeだけ生成され
-ます。
+- ビルド方法： Objective Camlがインストール済みあれば、あとはmakeでOKで
+す。Makefileの先頭のパス名だけ変更してください。OCAML_INCL_DIRは
+caml/mlvalues.hのcaml/があるディレクトリです。これだけ修正すれば、make
+だけで生成されます。
 
 - nobuyuki.tomizawa@gmail.com
