@@ -20,13 +20,13 @@ let usage_msg = "sl [-aFl]";;
 let my_mvwaddstr w y x s =
   let lines = get_lines () in
     if 0 <= y && y < lines then
-(*    let cols = get_cols () in *)
+      let cols = get_cols () in 
       let len = String.length s in
       let sx = x in
       let ex = x + len in
 	for x' = sx to ex - 1 do
-	  (*if 0 <= x' && x' < cols then*)
-	  mvwaddch w y x' s.[x' - sx];
+	  if 0 <= x' && x' < cols then
+	    mvwaddch w y x' s.[x' - sx];
 	done
 ;;
 
@@ -139,14 +139,9 @@ module Sl = struct
       
     let delln =  [|"                     "|] in
       
-    let sl = [|
-      Array.concat [logo; lwhl.(0); delln];
-      Array.concat [logo; lwhl.(1); delln];
-      Array.concat [logo; lwhl.(2); delln];
-      Array.concat [logo; lwhl.(3); delln];
-      Array.concat [logo; lwhl.(4); delln];
-      Array.concat [logo; lwhl.(5); delln];
-    |] in
+    let sl = Array.map
+	       (fun x -> Array.concat [logo; lwhl.(x); delln] )
+	       [|0;1;2;3;4;5|] in
       
     let coal = [|
       "____                 ";
@@ -258,16 +253,12 @@ module D51 = struct
 
     let coaldel = [|"                              "|] in
 
-    let d51 = [|
-      Array.concat [d51str; d51whl.(0); d51del];
-      Array.concat [d51str; d51whl.(1); d51del];
-      Array.concat [d51str; d51whl.(2); d51del];
-      Array.concat [d51str; d51whl.(3); d51del];
-      Array.concat [d51str; d51whl.(4); d51del];
-      Array.concat [d51str; d51whl.(5); d51del];
-    |] in
+    let d51 = Array.map
+	       (fun x -> Array.concat [d51str; d51whl.(x); d51del] )
+	       [|0;1;2;3;4;5|] in
+
     let coal = Array.append coal coaldel in
-      
+
       if x < - d51length then raise Exit;
       let dy = ref 0 in
       let y = ref ((get_lines ()) / 2 - 5) in
